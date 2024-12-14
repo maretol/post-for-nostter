@@ -1,0 +1,23 @@
+{
+  "name": "post-for-nostter",
+  "version": "1.0.0",
+  "description": "none",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/chrome": "0.0.137",
+    "@types/copy-webpack-plugin": "^8.0.0",
+    "@types/webpack": "^5.28.0",
+    "copy-webpack-plugin": "^8.1.1",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0"
+  },
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack -w"
+  },
+  "author": "",
+  "license": "ISC"
+}
