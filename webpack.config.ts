@@ -4,7 +4,8 @@ import CopyPlugin from 'copy-webpack-plugin'
 
 const entry: EntryObject = {
     main: path.join(__dirname, 'src', 'main.ts'),
-    background: path.join(__dirname, "src", "background.ts")
+    background: path.join(__dirname, "src", "background.ts"),
+    // content: path.join(__dirname, "src", "content.ts"),
 }
 
 const rule: RuleSetRule[] = [
