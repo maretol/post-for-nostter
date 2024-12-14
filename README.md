@@ -1,6 +1,11 @@
 # post-for-nostter
 閲覧中のページのURLとタイトルをnostter投稿するChrome拡張
 
+## download
+
+[Chrome拡張ストアリンク](
+https://chromewebstore.google.com/detail/post-for-nostter/abifdocleldfpalofpbjlndgmojmijab?authuser=0&hl=ja)
+
 ## build
 
 ```
