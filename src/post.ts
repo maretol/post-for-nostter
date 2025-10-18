@@ -16,4 +16,9 @@ const createMessage = (title: string, url: string): string => {
   return title + "\n" + url + "\n"
 }
 
-export { postPage, openPostTab, createMessage }
+function postUrl(url: string) {
+  const message = url + "\n"
+  openPostTab(message)
+}
+
+export { postPage, openPostTab, createMessage, postUrl }

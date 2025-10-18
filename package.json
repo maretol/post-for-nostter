@@ -4,7 +4,7 @@
   "description": "none",
   "main": "index.js",
   "devDependencies": {
-    "@types/chrome": "0.0.137",
+    "@types/chrome": "^0.1.24",
     "@types/copy-webpack-plugin": "^8.0.0",
     "@types/webpack": "^5.28.0",
     "copy-webpack-plugin": "^8.1.1",

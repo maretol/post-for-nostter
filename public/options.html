@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post for Nostter - オプション</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        h2 {
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #555;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .settings-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .setting-item {
+            margin-bottom: 15px;
+        }
+        .setting-label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: white;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        .checkbox-item label {
+            cursor: pointer;
+            font-weight: normal;
+        }
+        .description {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+            margin-left: 28px;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+        .status.show {
+            display: block;
+        }
+        .status.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Post for Nostter - オプション</h1>
+
+    <div class="settings-section">
+        <h2>標準の投稿挙動</h2>
+        <div class="setting-item">
+            <label class="setting-label" for="defaultBehavior">拡張機能のボタンをクリックしたときの挙動</label>
+            <select id="defaultBehavior">
+                <option value="domain_specific">特定のドメインのみ短縮（デフォルト）</option>
+                <option value="short">すべて短めのURLで投稿</option>
+                <option value="raw">すべてそのままのURLで投稿</option>
+            </select>
+            <div class="description">
+                「特定のドメインのみ短縮」: 下記で設定したドメインのみ特殊処理を適用します。<br>
+                「すべて短めのURL」: すべてのURLで不要なパラメータを削除し、特殊処理も適用します。<br>
+                「すべてそのまま」: URLを一切加工しません。
+            </div>
+        </div>
+    </div>
+
+    <div class="settings-section">
+        <h2>ドメイン別の特殊挙動</h2>
+        <div class="setting-item">
+            <div class="checkbox-item">
+                <input type="checkbox" id="amazonDomain">
+                <label for="amazonDomain">Amazon (amazon.co.jp)</label>
+            </div>
+            <div class="description">
+                商品ページのURLを最小限の形式（/dp/[商品コード]）に変換します
+            </div>
+        </div>
+        <div class="setting-item">
+            <div class="checkbox-item">
+                <input type="checkbox" id="youtubeDomain">
+                <label for="youtubeDomain">YouTube (www.youtube.com)</label>
+            </div>
+            <div class="description">
+                動画URLを最小限の形式（?v=[ビデオID]のみ）に変換します
+            </div>
+        </div>
+    </div>
+
+    <div class="status" id="status">設定を保存しました</div>
+
+    <div class="settings-section" style="text-align: center; padding: 15px;">
+        <a href="https://nostter.app/post?content=nostr:npub1gzw92wwjpq30gclquc5hugta2afpp8xmmn4uy838ysr47unpqfzsnf52uv" target="_blank" style="color: #0066cc; text-decoration: none; font-size: 14px;">機能リクエストはこちら</a>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>
