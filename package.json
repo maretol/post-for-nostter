@@ -4,8 +4,8 @@
   "description": "none",
   "main": "index.js",
   "devDependencies": {
-    "@types/chrome": "^0.1.27",
-    "@types/copy-webpack-plugin": "^8.0.0",
+    "@types/chrome": "^0.1.28",
+    "@types/copy-webpack-plugin": "^10.1.3",
     "@types/webpack": "^5.28.0",
     "copy-webpack-plugin": "^13.0.1",
     "ts-loader": "^9.5.4",
