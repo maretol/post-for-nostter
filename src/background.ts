@@ -17,10 +17,10 @@ async function leftClickListener(tab: chrome.tabs.Tab){
         let url = tab.url
         if (settings.defaultPostBehavior === 'short') {
             // すべて短縮: パラメータ削除 + ドメイン別処理を適用
-            url = editURL(tab.url, settings.domainSettings)
+            url = editURL(tab.url, { domainSettings: settings.domainSettings })
         } else if (settings.defaultPostBehavior === 'domain_specific') {
-            // 特定のドメインのみ短縮: ドメイン別処理のみ適用
-            url = editURL(tab.url, settings.domainSettings)
+            // 特定のドメインのみ短縮: 特定ドメイン以外はそのまま
+            url = editURL(tab.url, { domainSettings: settings.domainSettings, domainSpecificOnly: true })
         }
         // 'raw'の場合はそのまま
 
@@ -35,7 +35,7 @@ async function contextMenuListner(info: chrome.contextMenus.OnClickData, tab?: c
     }else if(info.menuItemId === "post_for_nostter"){
         if (typeof tab !== 'undefined' && typeof tab.url !== 'undefined' && typeof tab.title !== 'undefined'){
             const settings = await loadSettings()
-            const url = editURL(tab.url, settings.domainSettings)
+            const url = editURL(tab.url, { domainSettings: settings.domainSettings })
             postPage(url, tab.title)
         }
     }else if(info.menuItemId === "post_for_nostter_raw_url"){

@@ -12,6 +12,12 @@ https://chromewebstore.google.com/detail/post-for-nostter/abifdocleldfpalofpbjln
 $ npm run build
 ```
 
+## package
+
+```
+$ zip post_for_nostter.zip dist/*
+```
+
 ## how to work
 
 以下のURLを新しいページで開く
@@ -25,3 +31,4 @@ https://nostter.app/post?content={url-encoded-text-here}
 
 - Youtube -> ビデオIDがクエリパラメータなのでそのIDだけは残す
 - Amazonの商品ページはちょっと変えてる
+

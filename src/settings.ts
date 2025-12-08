@@ -27,8 +27,8 @@ export const defaultSettings: Settings = {
 // 設定を読み込む
 export async function loadSettings(): Promise<Settings> {
   return new Promise((resolve) => {
-    chrome.storage.sync.get(defaultSettings, (items) => {
-      resolve(items as Settings);
+    chrome.storage.sync.get(Object.keys(defaultSettings), (items) => {
+      resolve({ ...defaultSettings, ...items } as Settings);
     });
   });
 }

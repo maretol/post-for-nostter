@@ -1,6 +1,15 @@
 import type { DomainSettings } from './settings'
 
-export default function editURL(baseURL: string, domainSettings?: DomainSettings) : string {
+export interface EditURLOptions {
+  domainSettings?: DomainSettings
+  // trueの場合、特定ドメイン以外はURLをそのまま返す（domain_specific用）
+  domainSpecificOnly?: boolean
+}
+
+export default function editURL(baseURL: string, options?: EditURLOptions) : string {
+  const domainSettings = options?.domainSettings
+  const domainSpecificOnly = options?.domainSpecificOnly ?? false
+
   let url = new URL(baseURL)
   const protocol = url.protocol + "//"
   const host = url.host
@@ -15,6 +24,12 @@ export default function editURL(baseURL: string, domainSettings?: DomainSettings
       // Youtube はビデオIDがパラメータにあるので拾ってくる
       return protocol + host + path + getYoutubeVideoParameter(url.searchParams)
   }
+
+  // 特定ドメインのみ短縮モードの場合、マッチしなければ元のURLをそのまま返す
+  if (domainSpecificOnly) {
+    return baseURL
+  }
+
   return protocol + host + path + ancher
 }
 
