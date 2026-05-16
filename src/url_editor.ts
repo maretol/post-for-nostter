@@ -19,8 +19,8 @@ export default function editURL(baseURL: string, options?: EditURLOptions) : str
   // ドメイン設定が有効な場合のみ特殊処理を適用
   if(domainSettings?.amazon && host.match(/amazon.co.jp/)){
       // Amazon は特殊な置き換えをする
-      // /dp/ がパスに含まれていない場合は生のURLをそのまま返す
-      if(!path.includes('/dp/')){
+      // 商品ページ（/dp/ または /gp/product/）以外は生のURLをそのまま返す
+      if(!path.includes('/dp/') && !path.includes('/gp/product/')){
           return baseURL
       }
       return protocol + host + rewriteAmazonJPParameter(path)
@@ -40,7 +40,7 @@ export default function editURL(baseURL: string, options?: EditURLOptions) : str
 
 const rewriteAmazonJPParameter = (path: string): string => {
   // pathパラメータで、 dp/[product_code]/ の部分を抜き出す
-  const product_code = path.match(/dp\/([A-Z0-9]+)/)
+  const product_code = path.match(/dp\/([A-Z0-9]+)/) ?? path.match(/gp\/product\/([A-Z0-9]+)/)
   if(product_code){
       return "/dp/" + product_code[1]
   }
