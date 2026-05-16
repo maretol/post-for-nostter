@@ -39,8 +39,8 @@ export default function editURL(baseURL: string, options?: EditURLOptions) : str
 
 
 const rewriteAmazonJPParameter = (path: string): string => {
-  // pathパラメータで、 dp/[product_code]/ の部分を抜き出す
-  const product_code = path.match(/dp\/([A-Z0-9]+)/) ?? path.match(/gp\/product\/([A-Z0-9]+)/)
+  // pathパラメータで、 dp/[product_code]/ または gp/product/[product_code]/ の部分を抜き出す
+  const product_code = path.match(/(?:dp|gp\/product)\/([A-Z0-9]+)/)
   if(product_code){
       return "/dp/" + product_code[1]
   }
