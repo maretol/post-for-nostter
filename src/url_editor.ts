@@ -19,6 +19,10 @@ export default function editURL(baseURL: string, options?: EditURLOptions) : str
   // ドメイン設定が有効な場合のみ特殊処理を適用
   if(domainSettings?.amazon && host.match(/amazon.co.jp/)){
       // Amazon は特殊な置き換えをする
+      // /dp/ がパスに含まれていない場合は生のURLをそのまま返す
+      if(!path.includes('/dp/')){
+          return baseURL
+      }
       return protocol + host + rewriteAmazonJPParameter(path)
   }else if(domainSettings?.youtube && host.match(/www.youtube.com/)){
       // Youtube はビデオIDがパラメータにあるので拾ってくる
