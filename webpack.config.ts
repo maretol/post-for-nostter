@@ -17,7 +17,7 @@ const rule: RuleSetRule[] = [
     }
 ]
 
-const module: ModuleOptions = {
+const moduleOptions: ModuleOptions = {
     rules: rule
 }
 
@@ -40,7 +40,7 @@ const config: Configuration = {
         filename: '[name].js'
     },
     mode: "production",
-    module: module,
+    module: moduleOptions,
     resolve: resolve,
     plugins: plugins
 }
